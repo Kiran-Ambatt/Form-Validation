@@ -1,59 +1,48 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>DOB</title>
-    </head>
-    
-<body>
+  <head>
+    <title>Login Form</title>
+  </head>
+  <body>
+    <h1>Login Page</h1>
 
-<h2>Date difference calculator</h2>
+    <input type="text" placeholder="Username" id="uname">
 
-<label>Please Enter DOB: (mm/dd/yyyy)</label>
+    <input type="password" placeholder="Password" id="pwd">
 
-<input id="date" placeholder="mm/dd/yyyy">
+    <button type="button" onclick="abc()">Add</button>
 
-<button type="button" onclick="calculateDiff()">call-to-action</button>
+  <script>
 
-<p id="demo"></p>
+    function abc(){
 
-<script>
+     let x=document.getElementById("uname").value;
+     
+     if ((x.length<1) || (x.length > 8)){
 
-function calculateDiff()
-{
-    let x=document.getElementById("date").value;
+      alert('username must consist of less than 8 characters but not empty');
 
-    date_past = new Date(x);
+      return;
 
-    date_now = new Date();
+     }
 
-    if (date_past > date_now)
-    {
-        console.log('Future date');
+     let y=document.getElementById("pwd").value;
 
-        return false;
+     if(y.length > 7 && y.length <16 && (/\b[A-Z]/.test(y)) &&(/[0-9]\b/.test(y))){
+
+      alert('Login Successful');
+
+     }
+
+     else{
+
+      alert('"Your Password must meet following criteria!!"\nPassword must contain more than 7 Characters\nPassword should not exceed 16 characters\nPassword must begin with Capital letter\nPassword must end with an Integer');
+      
+      return;
+
+     }
+
     }
-    diffInMicroSeconds = date_now - date_past;
-   
-    seconds = parseInt(diffInMicroSeconds/1000);
-
-    minutes = parseInt(seconds/60);
-
-    hours = parseInt(minutes/60);
-    
-    days = parseInt(hours/24);
-   
-    hours = hours-(days*24);
-
-    minutes = minutes-(days*24*60)-(hours*60);
-
-    seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
-
-    var message = days+' day(s) '+hours+' hour(s) '+minutes+' minute(s) '+seconds+' second(s)';
-
-    console.log(message);
-
-    document.getElementById("demo").innerHTML=message;
-}
-</script>
-</body>
-</html> 
+  </script>
+  </body>
+</html>
