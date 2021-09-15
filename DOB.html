@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DOB</title>
+    </head>
+    
+<body>
+
+<h2>Date difference calculator</h2>
+
+<label>Please Enter DOB: (mm/dd/yyyy)</label>
+
+<input id="date" placeholder="mm/dd/yyyy">
+
+<button type="button" onclick="calculateDiff()">call-to-action</button>
+
+<p id="demo"></p>
+
+<script>
+
+function calculateDiff()
+{
+    let x=document.getElementById("date").value;
+
+    date_past = new Date(x);
+
+    date_now = new Date();
+
+    if (date_past > date_now)
+    {
+        console.log('Future date');
+
+        return false;
+    }
+    diffInMicroSeconds = date_now - date_past;
+   
+    seconds = parseInt(diffInMicroSeconds/1000);
+
+    minutes = parseInt(seconds/60);
+
+    hours = parseInt(minutes/60);
+    
+    days = parseInt(hours/24);
+   
+    hours = hours-(days*24);
+
+    minutes = minutes-(days*24*60)-(hours*60);
+
+    seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
+
+    var message = days+' day(s) '+hours+' hour(s) '+minutes+' minute(s) '+seconds+' second(s)';
+
+    console.log(message);
+
+    document.getElementById("demo").innerHTML=message;
+}
+</script>
+</body>
+</html> 
